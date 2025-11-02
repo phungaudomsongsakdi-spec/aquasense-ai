@@ -1,0 +1,220 @@
+/* ✅ src/index.css - เวอร์ชันเว็บไซต์ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌊 AquaSense AI Website Theme */
+@layer base {
+  html {
+    font-family: "Prompt", sans-serif;
+    background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+    color: #0d47a1;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent blue highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-emerald-500 to-green-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-emerald-600 hover:to-green-600 transition-all duration-200 transform hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-emerald-400 text-emerald-700 font-medium py-3 px-6 rounded-xl hover:bg-emerald-50 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 border border-green-200;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  }
+
+  /* Mobile-friendly buttons */
+  .btn-mobile {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+}
+
+/* Responsive Design */
+.container-responsive {
+  @apply w-full px-4 mx-auto;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    max-width: 640px;
+    @apply px-6;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+    @apply px-8;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: 1024px;
+    @apply px-12;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .text-mobile-lg {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  .text-mobile-base {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  
+  .text-mobile-sm {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Hide elements on mobile */
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-hidden {
+    display: block !important;
+  }
+  
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* Safe area insets for modern phones */
+@supports(padding: max(0px)) {
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .safe-left {
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+  
+  .safe-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0b7a57;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #0b7a57, #10b981);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #095c41, #0d9488);
+}
+
+/* Selection Color */
+::selection {
+  background: #a7f3d0;
+  color: #065f46;
+}
+
+/* Focus Styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #0b7a57;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .sidebar {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
